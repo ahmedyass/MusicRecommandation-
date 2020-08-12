@@ -1,0 +1,44 @@
+{% extends "bases.html" %}
+{% block title %}Home{% endblock %}
+{% block body %}
+
+<div class="ms_rcnt_slider">
+    <div class="ms_heading">
+        <h1>Singles</h1>
+    </div>
+    <div class="swiper-container">
+        <div class="swiper-wrapper">
+            {% for song in songs %}
+            <div class="swiper-slide">
+                <div class="ms_rcnt_box">
+                    <div class="ms_rcnt_box_img">
+                        <img src="{{ url_for('static', filename='images/music/r_music1.jpg') }}" alt="">
+                        <div class="ms_main_overlay">
+                            <div class="ms_box_overlay"></div>
+                            <div class="ms_more_icon">
+                                <img src="{{ url_for('static', filename='images/svg/more.svg') }}" alt="">
+                            </div>
+                            <ul class="more_option">
+                                {% for i in range(10) %}
+                                <li><a href="rate?rate={{ i+1 }}&id_song={{ song['id'] }}"><span class="opt_icon"><span class="icon icon_fav"></span></span>{{ i+1 }}</a></li>
+                                {% endfor %}
+                            </ul>
+                            <div class="ms_play_icon">
+                                <img src="{{ url_for('static', filename='images/svg/play.svg') }}" alt="">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ms_rcnt_box_text">
+                        <h3><a href="#">{{ song['Title'] }}</a></h3>
+                        <p>{{ song['Album'] }}</p>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    <!-- Add Arrows -->
+    <div class="swiper-button-next slider_nav_next"></div>
+    <div class="swiper-button-prev slider_nav_prev"></div>
+</div>
+{% endblock %}

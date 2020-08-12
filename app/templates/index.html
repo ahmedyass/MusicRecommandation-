@@ -1,0 +1,31 @@
+{% extends "bases.html" %}
+{% block title %}Home{% endblock %}
+{% block body %}
+<div class="jumbotron">
+  <h1>Focking Music </h1>
+  <p class="lead">Kada music ttan ayayay!</p>
+</div>
+<table>
+  <thead>
+    <tr>
+      <th>name</th>
+      <th>album</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for song in songs %}
+    <tr>
+      <td><a href="">{{ song['Title'] }}</a></td>
+      <td>{{ song['Album'] }}</td>
+      <td>
+        {% for i in range(10) %}
+        <a href="rate?rate={{ i+1 }}&id_song={{ song['id'] }}">{{ i+1 }}</a>
+        {% endfor %}
+      </td>
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}
